@@ -11,6 +11,7 @@ export default function App() {
     await Font.loadAsync({
       'noto-sans': require('./assets/fonts/NotoSans-Regular.ttf'),
       'noto-sans-bold': require('./assets/fonts/NotoSans-Bold.ttf'),
+      'mcp-iconpack': require('./assets/fonts/mcp-iconpack.ttf'),
     });
   }
 

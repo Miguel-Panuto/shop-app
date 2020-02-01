@@ -4,11 +4,13 @@ import { MaterialIcons } from '@expo/vector-icons'
 
 import { styles } from './CardStyle';
 
+import NumberFormater from '../../utils/NumberFormater';
+
 const Card = props => {
     return (
         <View style={styles.container}>
             <View style={styles.imageContainer}>
-                <Image source={props.imgUrl} style={styles.image} resizeMode='cover' />
+                <Image source={props.imgUrl} style={styles.image} resizeMode='contain' />
             </View>
             <View style={styles.infos}>
 
@@ -22,7 +24,7 @@ const Card = props => {
 
                 <View style={styles.actionButtons}>
 
-                    <TouchableOpacity style={styles.detailsBtn}>
+                    <TouchableOpacity style={styles.detailsBtn} onPress={props.navigate}>
                         <Text style={styles.btnText}>Details</Text>    
                     </TouchableOpacity>
 

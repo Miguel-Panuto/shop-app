@@ -1,8 +1,9 @@
 {
   "expo": {
-    "name": "shop-app-project",
+    "name": "Shop App",
     "slug": "shop-app-project",
     "privacy": "public",
+    "backgroundColor": "#EBF5F2",
     "sdkVersion": "36.0.0",
     "platforms": [
       "ios",

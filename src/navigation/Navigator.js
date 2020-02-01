@@ -15,30 +15,38 @@ import AddEditScreen from '../screens/AddEditScreen';
 import Colors from '../constants/Colors';
 
 const DefaultNavigatorOption = {
+    headerTintColor: Colors.textColor,
     headerStyle: {
-        backgroundColor: Colors.mainColor
-    }
+        backgroundColor: Colors.mainColor,
+        elevation: 0,
+        shadowColor: 'transparent'
+    },
+    headerTitleStyle: {
+        fontFamily: 'noto-sans-bold',
+        fontSize: 14,
+    },
+    headerTitleAlign: 'center',
 }
 
 const ShopNavigator = createStackNavigator({
     Shop: {
         screen: ShopScreen,
     },
-    cart: {
+    Cart: {
         screen: CartScreen,
     },
-    item: {
+    Item: {
         screen: ItemScreen,
     },
 }, {
-    defaultNavigationOptions: DefaultNavigatorOption
+    defaultNavigationOptions: DefaultNavigatorOption,
 });
 
 const ManageNavigator = createStackNavigator({
-    manage: {
+    Manage: {
         screen: ManageScreen,
     },
-    addedit: {
+    Addedit: {
         screen: AddEditScreen,
     },
 }, {
@@ -46,13 +54,13 @@ const ManageNavigator = createStackNavigator({
 });
 
 const SectionsNavigator = createDrawerNavigator({
-    shop: {
+    Shop: {
         screen: ShopNavigator
     },
-    orders: {
+    Orders: {
         screen: OrdersScreen,
     },
-    manage: ManageNavigator,
+    Manage: ManageNavigator,
 }, {
     defaultNavigationOptions: DefaultNavigatorOption
 });

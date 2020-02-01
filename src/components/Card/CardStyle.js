@@ -16,13 +16,15 @@ export const styles = StyleSheet.create({
     imageContainer: {
         width: 110,
         height: 120,
+        borderRadius: 2,
         marginHorizontal: 20,
-        elevation: 3
+        elevation: 3,
+        position: 'relative',
+        overflow: 'hidden',
+        alignItems: 'center',
     },
     image: {
-        width: 110,
-        height: 120,
-        borderRadius: 2,
+        flex: 1
     },
     infos: {
         flex: 1,
