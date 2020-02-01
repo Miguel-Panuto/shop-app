@@ -1,4 +1,4 @@
-class ItemModel {
+class Item {
     constructor (id, name, price, desc, imageUrl) {
         this.id = id;
         this.name = name;
@@ -7,4 +7,4 @@ class ItemModel {
         this.imageUrl = imageUrl;
     }
 }
-export default ItemModel;
+export default Item;

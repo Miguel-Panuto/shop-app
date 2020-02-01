@@ -1,9 +1,11 @@
-import { StyleSheet } from 'react-native';
-import Colors from '../../constants/Colors';
+import { StyleSheet, Dimensions } from 'react-native';
+
+const WIDTH_SIZE = Dimensions.get('window').width - 30;
 
 export const styles = StyleSheet.create({
     container: {
-        width: '90%',
+        marginVertical: 10,
+        width: WIDTH_SIZE,
         height: 130,
         backgroundColor: '#F4FBF9',
         borderRadius: 10,
@@ -23,6 +25,7 @@ export const styles = StyleSheet.create({
         borderRadius: 2,
     },
     infos: {
+        flex: 1,
         flexDirection: 'column'
     },
     title: {
@@ -31,9 +34,9 @@ export const styles = StyleSheet.create({
     },
     actionButtons: {
         marginTop: 10,
-        width: '57%',
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        marginRight: 20
     },
     titleText: {
         fontFamily: 'noto-sans-bold',

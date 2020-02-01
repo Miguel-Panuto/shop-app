@@ -25,7 +25,7 @@ export const styles = StyleSheet.create({
         elevation: 10
     },
     cardsContainer: {
-        alignItems: 'center',
-        marginTop: 20
-    }
+        marginTop: 20,
+        alignItems: 'center'
+    },
 })

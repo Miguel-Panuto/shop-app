@@ -1,12 +1,17 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, FlatList } from 'react-native';
 
 import { styles } from '../styles/ShopStyle';
 
 //Components
 import Card from '../components/Card/Card.js';
 
+//Datas
+import { VEGETABLES } from "../data/DataPlaceHolder";
+
 const ShopScreen = props => {
+
+    
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -14,7 +19,12 @@ const ShopScreen = props => {
                 <View style={styles.line} />
             </View>
             <View style={styles.cardsContainer}>
-                <Card imgUrl={require('../../assets/images/cenoura.jpg')} title="Carrot" price="$ 3.00"/>
+                <FlatList 
+                    data={VEGETABLES}
+                    keyExtractor={item => item.id}
+                    showsVerticalScrollIndicator={false}
+                    renderItem={({ item }) => <Card imgUrl={item.imageUrl} title={item.name} price={item.price} />}
+                />
             </View>
         </View>
     )
