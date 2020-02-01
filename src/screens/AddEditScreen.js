@@ -1,6 +1,12 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-export const AddEditScreen = props => {
-
+const AddEditScreen = props => {
+    return (
+        <View>
+            <Text>Add and edit screen</Text>
+        </View>
+    )
 }
+
+export default AddEditScreen;

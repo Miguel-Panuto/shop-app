@@ -1,6 +1,12 @@
 import React from 'react';
 import { View, Text } from "react-native";
 
-export const ItemScreen = props => {
+const ItemScreen = props => {
+    return(
+        <View>
+            <Text>Item Screen</Text>
+        </View>
+    );
+};
 
-}
+export default ItemScreen;

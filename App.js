@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
 
-import Navigator from './src/navigation/Navigator';
+import SectionsNavigator from './src/navigation/Navigator';
 
 export default function App() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -16,6 +16,6 @@ export default function App() {
 
   if (!isLoaded)
     return <AppLoading startAsync={fetchFonts} onFinish={() => setIsLoaded(true)}/>
-    
-  return <Navigator/>
+
+  return <SectionsNavigator />
 }

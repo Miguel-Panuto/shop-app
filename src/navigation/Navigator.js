@@ -1,5 +1,5 @@
 import React from 'react';
-import {  } from 'react-native';
+import { } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -12,12 +12,26 @@ import OrdersScreen from '../screens/OrdersScreen';
 import ManageScreen from '../screens/ManageScreen';
 import AddEditScreen from '../screens/AddEditScreen';
 
-const SectionsNavigator = createDrawerNavigator({
-    shop: ShopNavigator,
-    orders: {
-        screen: OrdersScreen,
+import Colors from '../constants/Colors';
+
+const DefaultNavigatorOption = {
+    headerStyle: {
+        backgroundColor: Colors.mainColor
+    }
+}
+
+const ShopNavigator = createStackNavigator({
+    Shop: {
+        screen: ShopScreen,
     },
-    manage: ManageNavigator,
+    cart: {
+        screen: CartScreen,
+    },
+    item: {
+        screen: ItemScreen,
+    },
+}, {
+    defaultNavigationOptions: DefaultNavigatorOption
 });
 
 const ManageNavigator = createStackNavigator({
@@ -27,18 +41,20 @@ const ManageNavigator = createStackNavigator({
     addedit: {
         screen: AddEditScreen,
     },
-})
+}, {
+    defaultNavigationOptions: DefaultNavigatorOption
+});
 
-const ShopNavigator = createStackNavigator({
-    shop : {
-        screen: ShopScreen,
+const SectionsNavigator = createDrawerNavigator({
+    shop: {
+        screen: ShopNavigator
     },
-    cart: {
-        screen: CartScreen,
+    orders: {
+        screen: OrdersScreen,
     },
-    item: {
-        screen: ItemScreen,
-    },
+    manage: ManageNavigator,
+}, {
+    defaultNavigationOptions: DefaultNavigatorOption
 });
 
 export default createAppContainer(SectionsNavigator)
