@@ -2,7 +2,7 @@ import { StyleSheet, Dimensions } from 'react-native';
 
 const WIDTH_SIZE = Dimensions.get('window').width - 30;
 
-export const styles = StyleSheet.create({
+const styles = StyleSheet.create({
     container: {
         marginVertical: 10,
         width: WIDTH_SIZE,
@@ -65,3 +65,5 @@ export const styles = StyleSheet.create({
         color: '#4B4B4B'
     }
 });
+
+export default styles;

@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons'
 
-import { styles } from './CardStyle';
+import styles from './CardStyle';
 
 import NumberFormater from '../../utils/NumberFormater';
 
@@ -19,17 +19,19 @@ const Card = props => {
                 </View>
 
                 <View>
-                    <Text style={styles.priceText}>{props.price}</Text>
+                    <Text style={styles.priceText}>{NumberFormater(props.price)}</Text>
                 </View>
 
                 <View style={styles.actionButtons}>
 
                     <TouchableOpacity style={styles.detailsBtn} onPress={props.navigate}>
-                        <Text style={styles.btnText}>Details</Text>    
+                        <Text style={styles.btnText}>Details</Text>
                     </TouchableOpacity>
 
-                    <MaterialIcons name="add-shopping-cart" size={20}/>
-                    
+                    <TouchableOpacity onPress={props.enableModal}>
+                        <MaterialIcons name="add-shopping-cart" size={20} />
+                    </TouchableOpacity>
+
                 </View>
 
             </View>

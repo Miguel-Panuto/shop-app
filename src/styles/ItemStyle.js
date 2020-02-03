@@ -4,7 +4,7 @@ import { StyleSheet, Dimensions } from 'react-native';
 import Colors from '../constants/Colors'
 const WIDTH_SIZE = Dimensions.get('window').width - 100;
 
-export const styles = StyleSheet.create({
+const styles = StyleSheet.create({
     container: {
         height: '100%',
         alignItems: 'center',
@@ -27,7 +27,7 @@ export const styles = StyleSheet.create({
         color: Colors.textColor,
         marginHorizontal: 30,
         textAlign: 'justify',
-        fontSize: 12
+        fontSize: 14
     },
     
     bottom: {
@@ -58,4 +58,6 @@ export const styles = StyleSheet.create({
         fontSize: 14,
         color: Colors.textColor,
     }
-})
+});
+
+export  default styles;

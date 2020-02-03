@@ -1,21 +1,34 @@
-import React from 'react';
-import { View, Text, FlatList } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text } from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 
-import { styles } from '../styles/ShopStyle';
+import styles from '../styles/ShopStyle';
 
 //Components
 import Card from '../components/Card/Card.js';
-import HeaderButton from '../components/HeaderButton';
+import ModalCart from '../components/ModalCart/ModalCart'
+import HeaderButton, { MaterialHeader } from '../components/HeaderButton';
 
 //Datas
 import { VEGETABLES } from "../data/DataPlaceHolder";
+import { ScrollView } from 'react-native-gesture-handler';
 
 const ShopScreen = ({ navigation }) => {
+    const [isVisible, setIsVisible] = useState(false);
+    const [obj, setObj] = useState(VEGETABLES.find(item => item.id === 'a0'));
 
-    const renderItens = ({ item }) => {
+    const setModal = (item) => {
+        if (isVisible === true) {
+            return setIsVisible(false);
+        }
+        setObj(item);
+        setIsVisible(true);
+    }
+
+    const renderItems = (item) => {
         return (
             <Card
+                key={item.id}
                 imgUrl={item.imageUrl}
                 title={item.name}
                 price={item.price}
@@ -28,6 +41,7 @@ const ShopScreen = ({ navigation }) => {
                         },
                     })
                 }
+                enableModal={() => setModal(item)}
             />
         )
     }
@@ -38,14 +52,11 @@ const ShopScreen = ({ navigation }) => {
                 <Text style={styles.headerText}>Shop{'\n'}Now!</Text>
                 <View style={styles.line} />
             </View>
-            <View style={styles.cardsContainer}>
-                <FlatList
-                    data={VEGETABLES}
-                    keyExtractor={item => item.id}
-                    showsVerticalScrollIndicator={false}
-                    renderItem={renderItens}
-                />
-            </View>
+            <ModalCart item={obj} visibility={isVisible} closeModal={() => setIsVisible(false)}/>
+            <ScrollView contentContainerStyle={styles.cardsContainer}>
+                {VEGETABLES.map(item => renderItems(item))}
+                <View style={{marginBottom: 30}}/>
+            </ScrollView>
         </View>
     )
 }
@@ -56,7 +67,11 @@ ShopScreen.navigationOptions = ({ navigation }) => {
         headerLeft: () =>
             <HeaderButtons HeaderButtonComponent={HeaderButton}>
                 <Item title="Menu" iconName="Menu" onPress={() => { navigation.toggleDrawer() }} />
-            </HeaderButtons>
+            </HeaderButtons>,
+        headerRight: () =>
+        <HeaderButtons HeaderButtonComponent={MaterialHeader}>
+            <Item title="Cart menu" iconName="shopping-cart" onPress={() => { navigation.navigate('Cart') }} />
+        </HeaderButtons>
     }
 }
 

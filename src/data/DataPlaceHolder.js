@@ -1,10 +1,14 @@
 import  Item from '../models/ItemModel';
-import NumberFormater from '../utils/NumberFormater';
+
 
 export const VEGETABLES = [
-    new Item('a0', 'Carrot', NumberFormater(3), 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lacus viverra vitae congue eu consequat ac felis. Duis at consectetur lorem donec massa sapien. Justo eget magna fermentum iaculis eu. Donec enim diam vulputate ut pharetra sit. Cras ornare arcu dui vivamus. Egestas tellus rutrum tellus pellentesque eu tincidunt. Diam sit amet nisl suscipit adipiscing bibendum est. Congue eu consequat ac felis donec et odio pellentesque diam. Nisl pretium fusce id velit ut tortor.', require('../../assets/images/cenoura.jpg')),
-    new Item('b1', 'Almond', NumberFormater(2.5), 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt', require('../../assets/images/almond.jpg')),
-    new Item('c2', 'Tomato', NumberFormater(4), 'Lorem ipsum dolor sit , amet adipiscing elit, sed do eiusmod tempor incididunt', require('../../assets/images/tomato.jpg')),
-    new Item('d3', 'Lettuce', NumberFormater(2), 'incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor', require('../../assets/images/alface.jpg')),
-    new Item('e4', 'Cornonga', NumberFormater(1), 'Buy and pick cornonga virus, how amazing is that?', require('../../assets/images/cornonga.jpg'))
+    new Item('a0', 'Carrot', 3, 'Carrot, (Daucus carota), herbaceous, generally biennial plant of the Apiaceae family that produces an edible taproot.', require('../../assets/images/cenoura.jpg')),
+    new Item('b1', 'Almond', 2.5, 'The almond (Prunus dulcis, syn. Prunus amygdalus) is a species of tree native to Iran and surrounding countries but widely cultivated elsewhere.', require('../../assets/images/almond.jpg')),
+    new Item('c2', 'Tomato', 4, 'The tomato is the edible, often red, berry of the plant Solanum lycopersicum, commonly known as a tomato plant. The species originated in western South America and Central America.', require('../../assets/images/tomato.jpg')),
+    new Item('d3', 'Lettuce', 2, 'Lettuce (Lactuca sativa) is an annual plant of the daisy family, Asteraceae. It is most often grown as a leaf vegetable, but sometimes for its stem and seeds. Lettuce is most often used for salads.', require('../../assets/images/alface.jpg')),
+    new Item('e4', 'Beetroot', 3, 'The beetroot is the taproot portion of a beet plant,[1] usually known in North America as the beet, and also known as the table beet, garden beet, sugar beet, red beet, dinner beet or golden beet.', require('../../assets/images/beterraba.jpg')),
+    new Item('f5', 'Onion', 2.5, 'The onion (Allium cepa L., from Latin cepa "onion"), also known as the bulb onion or common onion, is a vegetable that is the most widely cultivated species of the genus Allium. Its close relatives include the garlic, shallot, leek, chive, and Chinese onion.', require('../../assets/images/cebola.jpg')),
+    new Item('g6', 'Red Onion', 4, 'Red onions are cultivars of the onion (Allium cepa) with purplish-red skin and white flesh tinged with red.', require('../../assets/images/cebola-roxa.jpg')),
+    new Item('h7', 'Cabbage', 3.25, 'Cabbage (comprising several cultivars of Brassica oleracea) is a leafy green, red (purple), or white (pale green) biennial plant grown as an annual vegetable crop for its dense-leaved heads.', require('../../assets/images/repolho.jpg')),
+    new Item('i8', 'Parsley', 1.2, 'Parsley or garden parsley (Petroselinum crispum) is a species of flowering plant in the family Apiaceae that is native to the central Mediterranean region (Cyprus, southern Italy, Greece, Portugal, Spain, Malta, Morocco, Algeria, and Tunisia), but has naturalized elsewhere in Europe, and is widely cultivated as a herb, and a vegetable.', require('../../assets/images/salsa.jpg'))
 ];
