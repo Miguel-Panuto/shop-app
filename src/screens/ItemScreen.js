@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity } from "react-native";
-import { HeaderButtons, Item } from 'react-navigation-header-buttons';
+import { View, Image, TouchableOpacity } from "react-native";
+import { useSelector } from 'react-redux'
 
-import HeaderButton, { MaterialHeader } from '../components/HeaderButton';
+import { BackButton, CartButton } from '../components/HeaderButtons';
+import OpacityButton from '../components/OpacityButton/OpacityButton';
 import ModalCart from '../components/ModalCart/ModalCart';
+import { RegularText, BoldText } from '../components/DefaultText';
 
-import styles from '../styles/ItemStyle'
+import styles from '../styles/ItemStyle';
 
-import { VEGETABLES } from "../data/DataPlaceHolder";
-
-import NumberFormater from '../utils/NumberFormater'
+import NumberFormater from '../utils/NumberFormater';
 
 const ItemScreen = ({ navigation }) => {
-    const item = VEGETABLES.find(veg => veg.id === navigation.getParam('itemId'));
+    const items = useSelector(state => state.items);
+    const item = items.find(item => item.id === navigation.getParam('itemId'));
     const [isVisible, setIsVisible] = useState(false);
     return (
         <View style={styles.container}>
@@ -20,12 +21,10 @@ const ItemScreen = ({ navigation }) => {
                 <Image source={item.imageUrl} style={styles.image} resizeMode="cover" />
             </View>
             <ModalCart item={item} visibility={isVisible} closeModal={() => setIsVisible(false)}/>
-            <Text style={styles.desc}>{item.desc}</Text>
+            <RegularText style={styles.desc}>{item.desc}</RegularText>
             <View style={styles.bottom}>
-                <Text style={styles.priceText}>{NumberFormater(item.price)}</Text>
-                <TouchableOpacity style={styles.cartBtn} onPress={() => setIsVisible(true)}>
-                    <Text style={styles.btnLabel}>Add to cart</Text>
-                </TouchableOpacity>
+                <BoldText style={styles.priceText}>{NumberFormater(item.price)}</BoldText>
+                <OpacityButton buttonStyle={styles.cartBtn} onPress={() => setIsVisible(true)}>Add to cart</OpacityButton>
             </View>
         </View>
     );
@@ -35,13 +34,9 @@ ItemScreen.navigationOptions = ({ navigation }) => {
     return {
         headerTitle: navigation.getParam('title'),
         headerLeft: () =>
-            <HeaderButtons HeaderButtonComponent={HeaderButton}>
-                <Item title="Back button" iconName="BackBtn" onPress={() => { navigation.pop() }} />
-            </HeaderButtons>,
+            <BackButton onPress={() => { navigation.pop() }}/>,
         headerRight: () =>
-        <HeaderButtons HeaderButtonComponent={MaterialHeader}>
-            <Item title="Cart menu" iconName="shopping-cart" onPress={() => { navigation.navigate('Cart') }} />
-        </HeaderButtons>
+        <CartButton onPress={() => { navigation.navigate('Cart') }} />
     }
 }
 

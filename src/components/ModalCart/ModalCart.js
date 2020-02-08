@@ -1,12 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { View, Text, Image, TextInput, TouchableOpacity, Modal } from "react-native";
+import { useDispatch } from 'react-redux';
 
-import styles from './ModalCartStyle'
+import styles from './ModalCartStyle';
 
-import NumberFormater from '../../utils/NumberFormater'
+import { BoldText } from '../DefaultText'
+import OpacityButton from '../OpacityButton/OpacityButton';
+
+import NumberFormater from '../../utils/NumberFormater';
+
+import { addToCart } from '../../store/actions/cartAction';
 
 const ModalCart = ({ item, closeModal, visibility }) => {
     const [qtd, setQtd] = useState(1);
+    const dispatch = useDispatch();
 
     return (
         <Modal
@@ -21,11 +28,11 @@ const ModalCart = ({ item, closeModal, visibility }) => {
                         </View>
                         <View style={styles.messageContainer}>
                             <View style={styles.rowAlignment}>
-                                <Text style={styles.labels}>Price</Text>
+                                <BoldText style={styles.labels}>Price</BoldText>
                                 <Text style={styles.inputStyle}>{NumberFormater(item.price)}</Text>
                             </View>
                             <View style={styles.rowAlignment}>
-                                <Text style={styles.labels}>Qty</Text>
+                                <BoldText style={styles.labels}>Qty</BoldText>
                                 <TextInput
                                     style={styles.inputStyle}
                                     value={qtd.toString()}
@@ -34,19 +41,24 @@ const ModalCart = ({ item, closeModal, visibility }) => {
                                 />
                             </View>
                             <View style={styles.rowAlignment}>
-                                <Text style={styles.labels}>Total</Text>
+                                <BoldText style={styles.labels}>Total</BoldText>
                                 <Text style={styles.inputStyle}>{NumberFormater(item.price * qtd)}</Text>
                             </View>
                         </View>
                     </View>
                 </View>
                 <View style={{ flexDirection: 'row' }}>
-                    <TouchableOpacity onPress={closeModal} style={{ ...styles.cancelBtn, ...styles.btn }}>
-                        <Text style={styles.btnText}>Cancel</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ ...styles.addBtn, ...styles.btn }}>
-                        <Text style={styles.btnText}>Add to cart</Text>
-                    </TouchableOpacity>
+                    <OpacityButton onPress={closeModal} buttonStyle={{ ...styles.cancelBtn, ...styles.btn }} labelStyle={styles.btnText}>
+                        Cancel
+                    </OpacityButton>
+                    <OpacityButton buttonStyle={{ ...styles.addBtn, ...styles.btn }}
+                        labelStyle={styles.btnText}
+                        onPress={() => {
+                            dispatch(addToCart(item.id, item.name, item.price, qtd, item.imageUrl))
+                            closeModal();
+                        }}>
+                        Add to cart
+                    </OpacityButton>
                 </View>
             </View>
         </Modal>

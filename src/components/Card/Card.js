@@ -1,12 +1,16 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Image } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons'
+import { View, TouchableOpacity, Image } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
 
 import styles from './CardStyle';
+
+import { RegularText, BoldText } from '../DefaultText';
+import OpacityButton from '../OpacityButton/OpacityButton';
 
 import NumberFormater from '../../utils/NumberFormater';
 
 const Card = props => {
+
     return (
         <View style={styles.container}>
             <View style={styles.imageContainer}>
@@ -15,18 +19,18 @@ const Card = props => {
             <View style={styles.infos}>
 
                 <View style={styles.title}>
-                    <Text style={styles.titleText}>{props.title}</Text>
+                    <BoldText style={styles.titleText}>{props.title}</BoldText>
                 </View>
 
                 <View>
-                    <Text style={styles.priceText}>{NumberFormater(props.price)}</Text>
+                    <BoldText style={styles.priceText}>{NumberFormater(props.price)}</BoldText>
                 </View>
 
                 <View style={styles.actionButtons}>
 
-                    <TouchableOpacity style={styles.detailsBtn} onPress={props.navigate}>
-                        <Text style={styles.btnText}>Details</Text>
-                    </TouchableOpacity>
+                    <OpacityButton buttonStyle={styles.detailsBtn} onPress={props.navigate} labelStyle={styles.btnText}>
+                        Details
+                    </OpacityButton>
 
                     <TouchableOpacity onPress={props.enableModal}>
                         <MaterialIcons name="add-shopping-cart" size={20} />

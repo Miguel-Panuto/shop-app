@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
+import { useSelector } from 'react-redux';
 
 import styles from '../styles/ShopStyle';
 
 //Components
-import Card from '../components/Card/Card.js';
-import ModalCart from '../components/ModalCart/ModalCart'
-import HeaderButton, { MaterialHeader } from '../components/HeaderButton';
+import Card from '../components/Card/Card';
+import ModalCart from '../components/ModalCart/ModalCart';
+import { CartButton, MenuButton } from '../components/HeaderButtons';
 
-//Datas
-import { VEGETABLES } from "../data/DataPlaceHolder";
-import { ScrollView } from 'react-native-gesture-handler';
+
+import { BoldText } from '../components/DefaultText';
 
 const ShopScreen = ({ navigation }) => {
+    const items = useSelector(state => state.items);
+
     const [isVisible, setIsVisible] = useState(false);
-    const [obj, setObj] = useState(VEGETABLES.find(item => item.id === 'a0'));
+    const [obj, setObj] = useState(items.find(item => item.id === 'a0'));
 
     const setModal = (item) => {
         if (isVisible === true) {
@@ -49,13 +51,13 @@ const ShopScreen = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <Text style={styles.headerText}>Shop{'\n'}Now!</Text>
+                <BoldText style={styles.headerText}>Shop{'\n'}Now!</BoldText>
                 <View style={styles.line} />
             </View>
-            <ModalCart item={obj} visibility={isVisible} closeModal={() => setIsVisible(false)}/>
+            <ModalCart item={obj} visibility={isVisible} closeModal={() => setIsVisible(false)} />
             <ScrollView contentContainerStyle={styles.cardsContainer}>
-                {VEGETABLES.map(item => renderItems(item))}
-                <View style={{marginBottom: 30}}/>
+                {items.map(item => renderItems(item))}
+                <View style={{ marginBottom: 30 }} />
             </ScrollView>
         </View>
     )
@@ -65,13 +67,9 @@ ShopScreen.navigationOptions = ({ navigation }) => {
     return {
         headerTitle: '',
         headerLeft: () =>
-            <HeaderButtons HeaderButtonComponent={HeaderButton}>
-                <Item title="Menu" iconName="Menu" onPress={() => { navigation.toggleDrawer() }} />
-            </HeaderButtons>,
+            <MenuButton onPress={() => { navigation.toggleDrawer() }} />,
         headerRight: () =>
-        <HeaderButtons HeaderButtonComponent={MaterialHeader}>
-            <Item title="Cart menu" iconName="shopping-cart" onPress={() => { navigation.navigate('Cart') }} />
-        </HeaderButtons>
+            <CartButton onPress={() => { navigation.navigate('Cart') }} />
     }
 }
 

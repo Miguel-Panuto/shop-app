@@ -44,10 +44,8 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     labels: {
-        fontFamily: 'noto-sans-bold',
         fontSize: 14,
         marginVertical: 10,
-        color: Colors.textColor
     },
     inputStyle: {
         flex: 1,
@@ -62,13 +60,9 @@ const styles = StyleSheet.create({
         textAlign: 'right'
     },
     btn: {
-        elevation: 5,
         marginHorizontal: 20,
         marginVertical: -15,
-        padding: 3,
-        borderRadius: 5,
         width: 100,
-        alignItems: 'center',
         justifyContent: 'center',
     },
     addBtn: {
@@ -78,9 +72,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#ff1144ef'
     },
     btnText: {
-        fontFamily: 'noto-sans-bold',
-        fontSize: 14,
-        color: '#efefef'
+        color: '#efefef',
+        fontFamily: 'noto-sans-bold'
     }
 });
 

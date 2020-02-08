@@ -1,4 +1,3 @@
-import React from 'react';
 import { StyleSheet, Dimensions } from 'react-native';
 
 import Colors from '../constants/Colors'
@@ -24,10 +23,8 @@ const styles = StyleSheet.create({
         height: '100%'
     },
     desc: {
-        color: Colors.textColor,
         marginHorizontal: 30,
         textAlign: 'justify',
-        fontSize: 14
     },
     
     bottom: {
@@ -39,25 +36,11 @@ const styles = StyleSheet.create({
     priceText: {
         marginBottom: 45,
         marginLeft: 30,
-        fontSize: 18,
-        fontFamily: 'noto-sans-bold',
         color: '#8F8F8F'
     },
     cartBtn: {
         alignSelf: 'center',
-        width: 130,
-        height: 30,
-        backgroundColor: '#B89284',
-        borderRadius: 4,
-        elevation: 3,
-        justifyContent: 'center',
-        alignItems: 'center'
     },
-    btnLabel: {
-        fontFamily: 'noto-sans',
-        fontSize: 14,
-        color: Colors.textColor,
-    }
 });
 
 export  default styles;

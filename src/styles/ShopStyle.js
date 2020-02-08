@@ -1,4 +1,3 @@
-import React from 'react';
 import { StyleSheet } from 'react-native';
 
 import Colors from '../constants/Colors'
@@ -13,9 +12,7 @@ const styles = StyleSheet.create({
         marginVertical: 10
     },
     headerText: {
-        fontFamily: 'noto-sans-bold',
         fontSize: 32,
-        color: Colors.textColor
     },
     line: {
         height: 4,

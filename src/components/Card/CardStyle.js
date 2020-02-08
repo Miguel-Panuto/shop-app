@@ -41,28 +41,21 @@ const styles = StyleSheet.create({
         marginRight: 20
     },
     titleText: {
-        fontFamily: 'noto-sans-bold',
-        fontSize: 14,
+        fontSize: 16,
         color: '#5FC9AF'
     },
     priceText: {
-        fontFamily: 'noto-sans-bold',
         fontSize: 12,
         color: '#8F8F8F'
     },
     detailsBtn: {
-        backgroundColor: 'rgba(173, 84, 55, 0.4)',
         width: 70,
         height: 20,
         alignItems:'center',
-        justifyContent: 'center',
         borderRadius: 10,
-        elevation: 4
     },
     btnText: {
-        fontFamily: 'noto-sans',
         fontSize: 12,
-        color: '#4B4B4B'
     }
 });
 

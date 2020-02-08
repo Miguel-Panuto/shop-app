@@ -1,8 +1,11 @@
-import React from 'react';
 import { StyleSheet } from 'react-native';
 
-const styles = StyleSheet.create({
+import Colors from '../constants/Colors';
 
+const styles = StyleSheet.create({
+    main: {
+        backgroundColor: Colors.mainColor,
+    },
 });
 
 export  default styles;
