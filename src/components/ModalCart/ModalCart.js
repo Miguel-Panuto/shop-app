@@ -54,7 +54,7 @@ const ModalCart = ({ item, closeModal, visibility }) => {
                     <OpacityButton buttonStyle={{ ...styles.addBtn, ...styles.btn }}
                         labelStyle={styles.btnText}
                         onPress={() => {
-                            dispatch(addToCart(item.id, item.name, item.price, qtd, item.imageUrl))
+                            dispatch(addToCart(item.id, item.name, item.price, qtd, item.price * qtd,item.imageUrl))
                             closeModal();
                         }}>
                         Add to cart

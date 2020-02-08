@@ -1,16 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ScrollView, View } from 'react-native';
 import { useSelector } from 'react-redux';
-import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 
 import { BackButton } from '../components/HeaderButtons';
 import CartItem from '../components/CartItem/CartItem';
-import { RegularText } from '../components/DefaultText';
+import OpacityButton from '../components/OpacityButton/OpacityButton';
+import { RegularText, BoldText } from '../components/DefaultText';
 
 import styles from '../styles/CartStyle'
+import NumberFormater from '../utils/NumberFormater';
 
 const CartScreen = props => {
+    const [totalPrice, setTotalPrice] = useState(0);
     const itemsCart = useSelector(state => state.cart.items);
+
+    useEffect(() => {
+        if (itemsCart.length) {
+            if (itemsCart.length > 1) {
+                const totalCost = itemsCart.reduce((acc, cur) => acc + cur.total, 0);
+                return setTotalPrice(totalCost);
+            }
+            return setTotalPrice(itemsCart[0].total);
+        }
+    }, [])
 
     if (itemsCart.length <= 0 || !itemsCart)
         return <View style={{ ...styles.main, justifyContent: 'center', height: '100%' }}>
@@ -27,16 +39,24 @@ const CartScreen = props => {
         />
     }
     return (
-        <ScrollView style={styles.main}>
-            <View style={{ marginTop: 35 }} />
-            {itemsCart.map(item => renderItems(item))}
-        </ScrollView>
+        <>
+            <ScrollView style={styles.main}>
+                <View style={{ marginTop: 35 }} />
+                {itemsCart.map(item => {
+                    return renderItems(item);
+                })}
+            </ScrollView>
+            <View style={styles.totalContainer}>
+                <BoldText>Sub-total: {NumberFormater(totalPrice)}</BoldText>
+                <OpacityButton buttonStyle={styles.btn} labelStyle={styles.label} onPress={() => itemsCart}>Next</OpacityButton>
+            </View>
+        </>
     );
 };
 
 CartScreen.navigationOptions = ({ navigation }) => {
     return {
-        headerLeft: () => <BackButton onPress={() => navigation.pop()}/>
+        headerLeft: () => <BackButton onPress={() => navigation.pop()} />
     }
 }
 

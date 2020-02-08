@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Image, TouchableOpacity } from "react-native";
+import { View, Image } from "react-native";
 import { useSelector } from 'react-redux'
 
 import { BackButton, CartButton } from '../components/HeaderButtons';
