@@ -10,10 +10,9 @@ import { RegularText, BoldText } from '../components/DefaultText';
 import styles from '../styles/CartStyle'
 import NumberFormater from '../utils/NumberFormater';
 
-const CartScreen = props => {
+const CartScreen = ({ navigation }) => {
     const [totalPrice, setTotalPrice] = useState(0);
     const itemsCart = useSelector(state => state.cart.items);
-
     useEffect(() => {
         if (itemsCart.length) {
             if (itemsCart.length > 1) {
@@ -22,7 +21,7 @@ const CartScreen = props => {
             }
             return setTotalPrice(itemsCart[0].total);
         }
-    }, [])
+    }, []);
 
     if (itemsCart.length <= 0 || !itemsCart)
         return <View style={{ ...styles.main, justifyContent: 'center', height: '100%' }}>
@@ -32,12 +31,15 @@ const CartScreen = props => {
     const renderItems = item => {
         return <CartItem
             key={item.id}
+            id={item.id}
             name={item.name}
             qty={item.qty}
             imageUrl={item.imageUrl}
             price={item.price}
+            reload={() => navigation.navigate('Reload', {whatPage: 'Cart'})}
         />
     }
+
     return (
         <>
             <ScrollView style={styles.main}>

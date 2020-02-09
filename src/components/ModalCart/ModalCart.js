@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TextInput, TouchableOpacity, Modal } from "react-native";
+import { View, Text, Image, TextInput, Modal } from "react-native";
 import { useDispatch } from 'react-redux';
 
 import styles from './ModalCartStyle';

@@ -1,18 +1,27 @@
 import React from 'react';
 import { View, Image, TouchableOpacity } from 'react-native';
+import { useDispatch } from 'react-redux';
 
 import styles from './CartItemStyle';
 
 import { RegularText, BoldText } from '../DefaultText';
 
+import { removeFromCart } from '../../store/actions/cartAction';
+
 import NumberFormater from '../../utils/NumberFormater';
 
 const CartItem = props => {
+    const dispatch = useDispatch();
+
     return (
         <View style={styles.bg}>
             <View style={styles.header}>
                 <BoldText style={styles.title}>{props.name}</BoldText>
-                <TouchableOpacity style={styles.removeBtn}>
+                <TouchableOpacity style={styles.removeBtn} onPress={() => {
+                    dispatch(removeFromCart(props.id));
+                    props.reload();
+                }}
+                >
                     <RegularText style={styles.removeLabel}>X</RegularText>
                 </TouchableOpacity>
             </View>

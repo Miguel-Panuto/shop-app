@@ -1,6 +1,6 @@
 import React from 'react';
 import { } from 'react-native';
-import { createAppContainer } from 'react-navigation';
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createStackNavigator } from 'react-navigation-stack';
 
@@ -11,6 +11,7 @@ import CartScreen from '../screens/CartScreen';
 import OrdersScreen from '../screens/OrdersScreen';
 import ManageScreen from '../screens/ManageScreen';
 import AddEditScreen from '../screens/AddEditScreen';
+import ReloadPage from '../screens/ReloadPage';
 
 import Colors from '../constants/Colors';
 
@@ -65,4 +66,13 @@ const SectionsNavigator = createDrawerNavigator({
     defaultNavigationOptions: DefaultNavigatorOption
 });
 
-export default createAppContainer(SectionsNavigator)
+const MainNav = createSwitchNavigator({
+    Content: SectionsNavigator,
+    Reload: ReloadPage
+},{
+    defaultNavigationOptions: {
+        headerShown: false
+    }
+})
+
+export default createAppContainer(MainNav)
