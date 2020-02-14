@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, Image, TextInput, Modal } from "react-native";
 import { useDispatch } from 'react-redux';
 
@@ -12,8 +12,20 @@ import NumberFormater from '../../utils/NumberFormater';
 import { addToCart } from '../../store/actions/cartAction';
 
 const ModalCart = ({ item, closeModal, visibility }) => {
-    const [qtd, setQtd] = useState(1);
+    const [qtd, setQtd] = useState('');
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        setQtd('');
+    }, [visibility]);
+
+    const qtyHandler = qty => {
+        qty.map(char => console.log(char))
+        if (qty <= item.qty)
+            return setQtd(qty);
+        alert('Max quantity is ' + item.qty);
+        return setQtd(item.qty);
+    }
 
     return (
         <Modal
@@ -36,8 +48,9 @@ const ModalCart = ({ item, closeModal, visibility }) => {
                                 <TextInput
                                     style={styles.inputStyle}
                                     value={qtd.toString()}
-                                    onChangeText={qty => setQtd(qty)}
+                                    onChangeText={qtyHandler}
                                     keyboardType="number-pad"
+                                    placeholder={`Max: ${item.qty}`}
                                 />
                             </View>
                             <View style={styles.rowAlignment}>
@@ -54,7 +67,7 @@ const ModalCart = ({ item, closeModal, visibility }) => {
                     <OpacityButton buttonStyle={{ ...styles.addBtn, ...styles.btn }}
                         labelStyle={styles.btnText}
                         onPress={() => {
-                            dispatch(addToCart(item.id, item.name, item.price, qtd, item.price * qtd,item.imageUrl))
+                            dispatch(addToCart(item.id, item.name, item.price, qtd, item.price * qtd, item.imageUrl))
                             closeModal();
                         }}>
                         Add to cart

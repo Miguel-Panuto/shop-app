@@ -31,9 +31,7 @@ const ShopScreen = ({ navigation }) => {
         return (
             <Card
                 key={item.id}
-                imgUrl={item.imageUrl}
-                title={item.name}
-                price={item.price}
+                item={item}
                 navigate={() =>
                     navigation.navigate({
                         routeName: 'Item',

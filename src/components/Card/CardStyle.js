@@ -28,12 +28,15 @@ const styles = StyleSheet.create({
     },
     infos: {
         flex: 1,
+        justifyContent: 'space-between',
         flexDirection: 'column'
     },
     title: {
-        height: '50%',
         marginTop: 5
     },
+    btnsAndInfo: {
+        marginBottom: 5
+    },  
     actionButtons: {
         marginTop: 10,
         flexDirection: 'row',
