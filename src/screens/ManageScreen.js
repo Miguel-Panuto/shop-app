@@ -32,7 +32,8 @@ export const ManageScreen = ({ navigation }) => {
                         name: item.name,
                         desc: item.desc,
                         price: item.price,
-                        qty: item.qty
+                        qty: item.qty,
+                        id: item.id
                     } 
                 })}
             />
