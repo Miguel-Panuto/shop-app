@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { ScrollView, View } from 'react-native';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { BackButton } from '../components/HeaderButtons';
 import CartItem from '../components/CartItem/CartItem';
 import OpacityButton from '../components/OpacityButton/OpacityButton';
 import { RegularText, BoldText } from '../components/DefaultText';
 
-import styles from '../styles/CartStyle'
+import styles from '../styles/CartStyle';
+import { buyItem } from '../store/actions/itemAction';
 import NumberFormater from '../utils/NumberFormater';
 
 const CartScreen = ({ navigation }) => {
     const [totalPrice, setTotalPrice] = useState(0);
     const itemsCart = useSelector(state => state.cart.items);
+    const dispatch = useDispatch();
     useEffect(() => {
         if (itemsCart.length) {
             if (itemsCart.length > 1) {
@@ -50,7 +52,9 @@ const CartScreen = ({ navigation }) => {
             </ScrollView>
             <View style={styles.totalContainer}>
                 <BoldText>Sub-total: {NumberFormater(totalPrice)}</BoldText>
-                <OpacityButton buttonStyle={styles.btn} labelStyle={styles.label} onPress={() => itemsCart}>Next</OpacityButton>
+                <OpacityButton buttonStyle={styles.btn} labelStyle={styles.label} onPress={() => itemsCart}>
+                    Next
+                </OpacityButton>
             </View>
         </>
     );

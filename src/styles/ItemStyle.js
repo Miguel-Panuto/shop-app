@@ -34,8 +34,9 @@ const styles = StyleSheet.create({
       width: '100%',
     },
     priceText: {
-        marginBottom: 45,
+        marginBottom: 10,
         marginLeft: 30,
+        fontSize: 16,
         color: '#8F8F8F'
     },
     cartBtn: {

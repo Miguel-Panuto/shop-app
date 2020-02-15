@@ -20,7 +20,6 @@ const ModalCart = ({ item, closeModal, visibility }) => {
     }, [visibility]);
 
     const qtyHandler = qty => {
-        qty.map(char => console.log(char))
         if (qty <= item.qty)
             return setQtd(qty);
         alert('Max quantity is ' + item.qty);

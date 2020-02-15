@@ -20,10 +20,15 @@ const ItemScreen = ({ navigation }) => {
             <View style={styles.imageContainer}>
                 <Image source={item.imageUrl} style={styles.image} resizeMode="cover" />
             </View>
-            <ModalCart item={item} visibility={isVisible} closeModal={() => setIsVisible(false)}/>
+            <ModalCart item={item} visibility={isVisible} closeModal={() => setIsVisible(false)} />
             <RegularText style={styles.desc}>{item.desc}</RegularText>
             <View style={styles.bottom}>
-                <BoldText style={styles.priceText}>{NumberFormater(item.price)}</BoldText>
+                <View style={{marginBottom: 35}}>
+                    <BoldText style={styles.priceText}>{NumberFormater(item.price)}</BoldText>
+                    <RegularText style={styles.priceText}>
+                        Items on stock: <BoldText style={styles.priceText}>{item.qty}</BoldText>
+                    </RegularText>
+                </View>
                 <OpacityButton buttonStyle={styles.cartBtn} onPress={() => setIsVisible(true)}>Add to cart</OpacityButton>
             </View>
         </View>
@@ -34,9 +39,9 @@ ItemScreen.navigationOptions = ({ navigation }) => {
     return {
         headerTitle: navigation.getParam('title'),
         headerLeft: () =>
-            <BackButton onPress={() => { navigation.pop() }}/>,
+            <BackButton onPress={() => { navigation.pop() }} />,
         headerRight: () =>
-        <CartButton onPress={() => { navigation.navigate('Cart') }} />
+            <CartButton onPress={() => { navigation.navigate('Cart') }} />
     }
 }
 
