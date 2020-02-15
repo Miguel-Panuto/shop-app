@@ -26,3 +26,11 @@ export const MenuButton = ({ onPress }) => {
         </HeaderButtons>
     )
 }
+
+export const AddButton = ({ onPress }) => {
+    return (
+        <HeaderButtons HeaderButtonComponent={MaterialHeader}>
+            <Item title="Add" iconName="add-circle" onPress={onPress} />
+        </HeaderButtons>
+    )
+}

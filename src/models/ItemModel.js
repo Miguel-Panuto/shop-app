@@ -1,6 +1,7 @@
 class Item {
-    constructor (id, name, price, desc, imageUrl, qty) {
+    constructor (id, userId, name, price, desc, imageUrl, qty) {
         this.id = id;
+        this.userId = userId;
         this.name = name;
         this.price = price;
         this.desc = desc;

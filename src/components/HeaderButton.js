@@ -20,7 +20,7 @@ export const MaterialHeader = props => {
         <HeaderButton
             {...props}
             IconComponent={MaterialIcons}
-            iconSize={28}
+            iconSize={30}
             color="#4B4B4B"
         />
     )

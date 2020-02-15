@@ -50,6 +50,9 @@ const ManageNavigator = createStackNavigator({
     Addedit: {
         screen: AddEditScreen,
     },
+    Item: {
+        screen: ItemScreen
+    }
 }, {
     defaultNavigationOptions: DefaultNavigatorOption
 });

@@ -7,6 +7,7 @@ export const addNewItem = (id, name, price, desc, imageUrl, qty) => {
         type: ADD_NEW_ITEM,
         payload: {
             id,
+            userId,
             name,
             price,
             desc,

@@ -41,7 +41,8 @@ const ShopScreen = ({ navigation }) => {
                         },
                     })
                 }
-                enableModal={() => setModal(item)}
+                iconName="add-shopping-cart"
+                actionButton={() => setModal(item)}
             />
         )
     }
