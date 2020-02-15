@@ -9,6 +9,7 @@ import { RegularText, BoldText } from '../components/DefaultText';
 
 import styles from '../styles/CartStyle';
 import { buyItem } from '../store/actions/itemAction';
+import { cleanCart } from '../store/actions/cartAction';
 import NumberFormater from '../utils/NumberFormater';
 
 const CartScreen = ({ navigation }) => {
@@ -38,7 +39,7 @@ const CartScreen = ({ navigation }) => {
             qty={item.qty}
             imageUrl={item.imageUrl}
             price={item.price}
-            reload={() => navigation.navigate('Reload', {whatPage: 'Cart'})}
+            reload={() => navigation.navigate('Reload', { whatPage: 'Cart' })}
         />
     }
 
@@ -52,7 +53,15 @@ const CartScreen = ({ navigation }) => {
             </ScrollView>
             <View style={styles.totalContainer}>
                 <BoldText>Sub-total: {NumberFormater(totalPrice)}</BoldText>
-                <OpacityButton buttonStyle={styles.btn} labelStyle={styles.label} onPress={() => itemsCart}>
+                <OpacityButton
+                    buttonStyle={styles.btn}
+                    labelStyle={styles.label}
+                    onPress={() => {
+                        dispatch(buyItem(itemsCart));
+                        dispatch(cleanCart());
+                        navigation.navigate('Reload', { whatPage: 'Shop' });
+                    }}
+                >
                     Next
                 </OpacityButton>
             </View>

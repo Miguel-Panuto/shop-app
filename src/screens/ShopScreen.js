@@ -17,7 +17,7 @@ const ShopScreen = ({ navigation }) => {
     const items = useSelector(state => state.items);
 
     const [isVisible, setIsVisible] = useState(false);
-    const [obj, setObj] = useState(items.find(item => item.id === 'a0'));
+    const [obj, setObj] = useState(items.find(item => item));
 
     const setModal = (item) => {
         if (isVisible === true) {

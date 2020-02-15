@@ -1,4 +1,4 @@
-import { ADD_TO_CART, REMOVE_FROM_CART } from '../actions/cartAction';
+import { ADD_TO_CART, REMOVE_FROM_CART, CLEAN_CART } from '../actions/cartAction';
 
 const initialState = {
     items: [],
@@ -20,6 +20,11 @@ export default function cartReducer(state = initialState, { type, payload }) {
                 state.items.splice(itemIndex, 1);
             }
             return state;
+        
+        case CLEAN_CART:
+            state = initialState;
+            return state;
+            
         default:
             return state;
     }

@@ -16,12 +16,11 @@ export const addNewItem = (id, name, price, desc, imageUrl, qty) => {
     }
 }
 
-export const buyItem = (id, qty) => {
+export const buyItem = (items) => {
     return {
         type: BUY_ITEM,
         payload: {
-            id,
-            qty
+            items
         }
     }
 }
