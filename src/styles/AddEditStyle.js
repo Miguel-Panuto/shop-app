@@ -7,18 +7,30 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.mainColor,
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'space-between',
-        paddingVertical: 40
+        justifyContent: 'center',
     },
     input: {
         borderBottomColor: Colors.complementary,
         borderBottomWidth: 2,
-        width: '80%',
-        padding: 10,
+        width: '100%',
+        paddingVertical: 10,
         height: 40,
         fontFamily: 'noto-sans',
         fontSize: 14,
-        color: Colors.textColor
+        color: Colors.textColor,
+        marginVertical: 20
+    },
+    inputContainer: {
+        width: '80%',
+        alignItems: 'flex-start',
+    },
+    btn: {
+        backgroundColor: '#66F',
+        alignSelf: 'center'
+    },
+    labelBtn: {
+        color: '#EEE',
+        fontWeight: 'bold'
     },
     inputDesc: {
         borderLeftColor: Colors.complementary,
@@ -26,29 +38,8 @@ const styles = StyleSheet.create({
         borderLeftWidth: 2,
         borderRightWidth: 2,
         borderRadius: 5,
-        height: 150
+        height: 150,
     },
-    stock: {
-        flexDirection: 'row',
-        width: '80%',
-        justifyContent: 'space-between',
-    },
-    row: {
-        flexDirection: 'row',
-        width: '45%',
-        justifyContent: 'space-between'
-    },
-    inputBottom: {
-        width: '80%',
-        paddingLeft: 2
-    },
-    label: {
-        fontSize: 14,
-        marginTop: 9
-    },
-    inputQty: {
-        width: '45%'
-    }  
 });
 
-export  default styles;
+export default styles;

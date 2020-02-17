@@ -4,6 +4,7 @@ import { VEGETABLES } from '../../data/DataPlaceHolder';
 export default function itemsReducer(state = VEGETABLES, { type, payload }) {
     switch(type) {
         case ADD_NEW_ITEM:
+            console.log(payload);
             return state;
 
         case BUY_ITEM:
